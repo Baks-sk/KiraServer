@@ -3,13 +3,13 @@ body {
     background-color: #f0f0f0;
     color: #333;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
+    justify-content: center; /* Vycentrujeme horizontálně */
+    align-items: center; /* Vycentrujeme vertikálně */
+    min-height: 100vh; /* Zajistíme, aby pozadí pokrylo celou obrazovku */
     margin: 0;
-    padding: 0 20px;
+    padding: 0;
     transition: background-color 0.3s ease, color 0.3s ease;
-    background-image: url("images/foto.png"); /* Cesta k tvé fotce */
+    background-image: url("foto.png"); /* Cesta k tvé fotce */
     background-size: cover; /* Nebo contain, auto, atd. podle potřeby */
     background-repeat: no-repeat; /* Nebo repeat, repeat-x, repeat-y */
 }
@@ -17,7 +17,7 @@ body {
 body.dark {
     background-color: #1e1e1e;
     color: #eee;
-    background-image: url("images/foto_tma.png"); /* Cesta k tvé fotce pro tmavý režim */
+    background-image: url("foto_tma.png"); /* Cesta k tvé fotce pro tmavý režim */
 }
 
 h1 {
@@ -44,10 +44,6 @@ body.dark h1 {
     width: 60%;
     max-width: 1200px;
     transition: background-color 0.3s ease;
-    position: absolute; /* Nastavíme kontejner na absolutní pozici */
-    top: 50%; /* Umístíme ho do poloviny výšky stránky */
-    left: 50%; /* Umístíme ho do poloviny šířky stránky */
-    transform: translate(-50%, -50%); /* Posuneme ho tak, aby byl přesně uprostřed */
 }
 
 body.dark #statusContainer {
@@ -148,6 +144,9 @@ input:focus + .slider {
 
 input:checked + .slider:before {
     -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
