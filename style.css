@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-image: url("images/foto.png"); /* Cesta k tvé fotce */
+    background-size: cover; /* Nebo contain, auto, atd. podle potřeby */
+    background-repeat: no-repeat; /* Nebo repeat, repeat-x, repeat-y */
+}
+
+body.dark {
+    background-color: #1e1e1e;
+    color: #eee;
+    background-image: url("images/foto_tma.png"); /* Cesta k tvé fotce pro tmavý režim */
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 30px;
+    transition: color 0.3s ease;
+}
+
+body.dark h1 {
+    color: #689f38;
+}
+
+#statusContainer {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    max-width: 1200px;
+    transition: background-color 0.3s ease;
+    position: absolute; /* Nastavíme kontejner na absolutní pozici */
+    top: 50%; /* Umístíme ho do poloviny výšky stránky */
+    left: 50%; /* Umístíme ho do poloviny šířky stránky */
+    transform: translate(-50%, -50%); /* Posuneme ho tak, aby byl přesně uprostřed */
+}
+
+body.dark #statusContainer {
+    background-color: #333;
+}
+
+#statusImage {
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 15px;
+    border: 5px solid #4CAF50;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, border-color 0.3s ease;
+}
+
+body.dark #statusImage {
+    border-color: #689f38;
+}
+
+#statusImage:hover {
+    transform: scale(1.1);
+}
+
+#rightLink {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark #rightLink {
+    background-color: #333;
+    color: #689f38;
+}
+
+#rightLink:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Přepínač motivu */
+.switch {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
