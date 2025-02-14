@@ -1,0 +1,81 @@
+/* Tmavý motiv */
+body.dark {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Světlý motiv */
+body.light {
+    background-color: #fff;
+    color: #000;
+}
+
+#statusContainer {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+body.light #statusContainer {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+#statusImage {
+    width: 100%;
+    border-radius: 15px;
+    border: 3px solid #4CAF50;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+#statusImage:hover {
+    transform: scale(1.05);
+}
+
+#rightLink {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#rightLink:hover {
+    background-color: #388E3C;
+}
+
+body.light #rightLink {
+    color: #000;
+    background-color: #c8e6c9;
+}
+
+body.light #rightLink:hover {
+    background-color: #a5d6a7;
+}
