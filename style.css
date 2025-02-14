@@ -1,0 +1,184 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* Uspořádání prvků svisle */
+    align-items: center; /* Vycentrování horizontálně */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Přidána podmínka pro bílé pozadí */
+body:not(.dark) {
+    background-image: url("foto.png"); /* Cesta k obrázku */
+    background-size: cover; /* Způsob zobrazení obrázku */
+    background-repeat: no-repeat; /* Zamezení opakování obrázku */
+}
+
+/* Tmavý motiv */
+body.dark {
+    background-color: #1e1e1e;
+    color: #eee;
+    background-image: url("foto-dark.png"); /* Cesta k obrázku pro tmavý motiv */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Přepínač motivu */
+.switch {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+#statusContainer {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    max-width: 1200px;
+    margin-top: 15px; /* Odsazení od horního okraje 15 pixelů */
+    transition: background-color 0.3s ease; /* Přidána plynulá přechod pro kontejner */
+    transform: scale(0.9); /* Zmenšení o 10 % */
+}
+
+body.dark #statusContainer {
+    background-color: #333; /* Tmavší pozadí kontejneru */
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 30px;
+    transition: color 0.3s ease; /* Přidána plynulá přechod pro nadpis */
+}
+
+body.dark h1 {
+    color: #689f38; /* Světlejší zelená pro nadpis v tmavém motivu */
+}
+
+#statusImage {
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 15px;
+    border: 5px solid #4CAF50;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, border-color 0.3s ease; /* Přidána plynulá přechod pro rámeček */
+}
+
+body.dark #statusImage {
+    border-color: #689f38; /* Světlejší zelená pro rámeček v tmavém motivu */
+}
+
+#statusImage:hover {
+    transform: scale(1.1);
+}
+
+#rightLink {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Přidána plynulá přechod pro odkaz */
+}
+
+body.dark #rightLink {
+    background-color: #333; /* Tmavší pozadí odkazu */
+    color: #689f38; /* Světlejší zelená pro odkaz v tmavém motivu */
+}
+
+#rightLink:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Styl tlačítka pro stažení */
+#downloadButton {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark #downloadButton {
+    background-color: #689f38;
+}
+
+#downloadButton:hover {
+    background-color: #45a049;
+    color: white;
+}
