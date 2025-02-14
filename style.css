@@ -3,8 +3,8 @@ body {
     background-color: #f0f0f0;
     color: #333;
     display: flex;
-    flex-direction: column; /* Uspořádáme prvky svisle */
-    align-items: center; /* Vycentrujeme horizontálně */
+    justify-content: center; /* Vycentrujeme horizontálně */
+    align-items: center; /* Vycentrujeme vertikálně */
     min-height: 100vh; /* Zajistíme, aby pozadí pokrylo celou obrazovku */
     margin: 0;
     padding: 0;
@@ -17,6 +17,7 @@ body {
 body.dark {
     background-color: #1e1e1e;
     color: #eee;
+    background-image: url("foto_tma.png"); /* Cesta k tvé fotce pro tmavý režim */
 }
 
 h1 {
@@ -43,7 +44,6 @@ body.dark h1 {
     width: 60%;
     max-width: 1200px;
     transition: background-color 0.3s ease;
-    margin-top: 20px; /* Odsazení odshora */
 }
 
 body.dark #statusContainer {
