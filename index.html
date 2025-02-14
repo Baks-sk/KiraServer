@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Světle šedé pozadí pro stránku */
+            color: #333; /* Tmavý text pro lepší čitelnost */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh; /* Celková výška obrazovky */
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 3rem; /* Zvětšený nadpis */
+            text-align: center;
+            color: #4CAF50; /* Zelená barva nadpisu */
+            margin-bottom: 30px; /* Větší mezera mezi nadpisem a obrázkem */
+        }
+
+        #statusContainer {
+            background-color: #fff; /* Bílý box pro obrázek */
+            border-radius: 20px; /* Zaoblené rohy pro box */
+            padding: 30px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Silnější stín pro lepší efekt */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 60%; /* Šířka kontejneru */
+            max-width: 1200px; /* Maximální šířka kontejneru */
+        }
+
+        #statusImage {
+            width: 90%; /* Zvýšená šířka obrázku */
+            max-width: 1200px; /* Maximální šířka obrázku */
+            border-radius: 15px; /* Zaoblené rohy obrázku */
+            border: 5px solid #4CAF50; /* Zelený rámeček okolo obrázku */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Silnější stín */
+            transition: transform 0.3s ease-in-out; /* Plynulý efekt pro zvětšení obrázku */
+        }
+
+        #statusImage:hover {
+            transform: scale(1.1); /* Zvýšení obrázku při najetí myší */
+        }
+
+        /* Styly pro pravý odkaz */
+        #rightLink {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+            text-decoration: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #rightLink:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a id="rightLink" href="https://www.example.com" target="_blank">Dydmapa</a>
+
+    <div id="statusContainer">
+        <h1>Aktuální Status Serveru</h1>
+        <img id="statusImage" src="https://query.hicoria.com/query.php?user=mcx_390085" alt="Server Status">
+    </div>
+
+    <script>
+        setInterval(function() {
+            var img = document.getElementById('statusImage');
+            img.src = "https://query.hicoria.com/query.php?user=mcx_390085?" + new Date().getTime();  // Přidání timestamp pro obnovení obrázku
+        }, 2500);  // Obnoví obrázek každé 2.5 sekundy
+    </script>
+</body>
+</html>
