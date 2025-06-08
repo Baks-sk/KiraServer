@@ -156,29 +156,6 @@ body.dark #rightLink {
     background-color: #4CAF50;
     color: white;
 }
-
-/* Styl tlačítka pro stažení */
-#downloadButton {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-    background-color: #4CAF50;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.dark #downloadButton {
-    background-color: #689f38;
-}
-
-#downloadButton:hover {
     background-color: #45a049;
     color: white;
 }
