@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Serveru</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider round"></span>
+    </label>
+
+    <a id="leftLink" href="index.html">Hlavní Stránka</a>
+
+    <div id="statusContainer">
+        <h1>Status Serveru</h1>
+        <img id="statusImage" src="https://query.hicoria.com/query.php?user=mcx_430807" alt="Server Status">
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Theme preference check
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.add(savedTheme);
+            themeToggle.checked = savedTheme === 'dark';
+        }
+
+        // Theme toggle event
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                body.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Auto-refresh status image
+        setInterval(function() {
+            var img = document.getElementById('statusImage');
+            img.src = "https://query.hicoria.com/query.php?user=mcx_430807?" + new Date().getTime(); 
+        }, 2500);
+    </script>
+</body>
+</html>
