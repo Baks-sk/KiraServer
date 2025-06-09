@@ -3,31 +3,29 @@ body {
     background-color: #f0f0f0;
     color: #333;
     display: flex;
-    flex-direction: column; /* Uspořádání prvků svisle */
-    align-items: center; /* Vycentrování horizontálně */
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
     margin: 0;
     padding: 0 20px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Přidána podmínka pro bílé pozadí */
 body:not(.dark) {
-    background-image: url("foto.png"); /* Cesta k obrázku */
-    background-size: cover; /* Způsob zobrazení obrázku */
-    background-repeat: no-repeat; /* Zamezení opakování obrázku */
-}
-
-/* Tmavý motiv */
-body.dark {
-    background-color: #1e1e1e;
-    color: #eee;
-    background-image: url("foto-dark.png"); /* Cesta k obrázku pro tmavý motiv */
+    background-image: url("foto.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-/* Přepínač motivu */
+body.dark {
+    background-color: #1e1e1e;
+    color: #eee;
+    background-image: url("foto-dark.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Theme toggle switch */
 .switch {
     position: absolute;
     top: 20px;
@@ -35,9 +33,10 @@ body.dark {
     display: inline-block;
     width: 60px;
     height: 34px;
+    z-index: 1;
 }
 
-.switch input { 
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
@@ -51,7 +50,6 @@ body.dark {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
     transition: .4s;
     border-radius: 34px;
 }
@@ -64,7 +62,6 @@ body.dark {
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
     transition: .4s;
     border-radius: 50%;
 }
@@ -78,58 +75,23 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
 
-#statusContainer {
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 60%;
-    max-width: 1200px;
-    margin-top: 15px; /* Odsazení od horního okraje 15 pixelů */
-    transition: background-color 0.3s ease; /* Přidána plynulá přechod pro kontejner */
-    transform: scale(0.9); /* Zmenšení o 10 % */
-}
-
-body.dark #statusContainer {
-    background-color: #333; /* Tmavší pozadí kontejneru */
-}
-
-h1 {
-    font-size: 3rem;
-    text-align: center;
+/* Navigation links */
+#leftLink {
+    font-size: 1.5rem;
+    font-weight: bold;
     color: #4CAF50;
-    margin-bottom: 30px;
-    transition: color 0.3s ease; /* Přidána plynulá přechod pro nadpis */
-}
-
-body.dark h1 {
-    color: #689f38; /* Světlejší zelená pro nadpis v tmavém motivu */
-}
-
-#statusImage {
-    width: 90%;
-    max-width: 1200px;
-    border-radius: 15px;
-    border: 5px solid #4CAF50;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, border-color 0.3s ease; /* Přidána plynulá přechod pro rámeček */
-}
-
-body.dark #statusImage {
-    border-color: #689f38; /* Světlejší zelená pro rámeček v tmavém motivu */
-}
-
-#statusImage:hover {
-    transform: scale(1.1);
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #rightLink {
@@ -144,18 +106,99 @@ body.dark #statusImage {
     padding: 10px 20px;
     border-radius: 5px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, color 0.3s ease; /* Přidána plynulá přechod pro odkaz */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body.dark #leftLink,
 body.dark #rightLink {
-    background-color: #333; /* Tmavší pozadí odkazu */
-    color: #689f38; /* Světlejší zelená pro odkaz v tmavém motivu */
+    background-color: #333;
+    color: #689f38;
 }
 
+#leftLink:hover,
 #rightLink:hover {
     background-color: #4CAF50;
     color: white;
 }
-    background-color: #45a049;
-    color: white;
+
+/* Welcome container */
+#welcomeContainer {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    max-width: 800px;
+    margin-top: 100px;
+    transition: background-color 0.3s ease;
+}
+
+body.dark #welcomeContainer {
+    background-color: #333;
+}
+
+#welcomeContainer h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #4CAF50;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+body.dark #welcomeContainer h1 {
+    color: #689f38;
+}
+
+/* Status container (for status.html) */
+#statusContainer {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    max-width: 1200px;
+    margin-top: 80px;
+    transition: background-color 0.3s ease;
+}
+
+body.dark #statusContainer {
+    background-color: #333;
+}
+
+#statusContainer h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 30px;
+    transition: color 0.3s ease;
+}
+
+body.dark #statusContainer h1 {
+    color: #689f38;
+}
+
+/* Status image */
+#statusImage {
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 15px;
+    border: 5px solid #4CAF50;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, border-color 0.3s ease;
+}
+
+body.dark #statusImage {
+    border-color: #689f38;
+}
+
+#statusImage:hover {
+    transform: scale(1.1);
 }
