@@ -35,7 +35,6 @@ body.dark {
     height: 34px;
     z-index: 1;
 }
-
 .switch input {
     opacity: 0;
     width: 0;
@@ -65,7 +64,6 @@ body.dark {
     transition: .4s;
     border-radius: 50%;
 }
-
 input:checked + .slider {
     background-color: #2196F3;
 }
