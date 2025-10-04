@@ -180,7 +180,27 @@ body.dark #statusImage {
 }
 
 #statusImage:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+}
+
+/* Resource Pack Button */
+#resourcePackBtn {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+#resourcePackBtn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
 }
 
 /* Responsive Adjustments */
@@ -199,7 +219,4 @@ body.dark #statusImage {
   #leftLink {
     left: 80px;
   }
-}
-#statusImage:hover {
-    transform: scale(1.1);
 }

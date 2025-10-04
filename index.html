@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE <!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
@@ -13,24 +13,26 @@
     </label>
 
     <a id="leftLink" href="status.html">Status Serveru</a>
-    <a id="rightLink" href="http://ms48.hicoria.cloud:20693/" target="_blank">Bluemapa</a>
+    <a id="rightLink" href="http://ms48.hicoria.cloud:20693/" target="_blank">Dynmap</a>
 
     <div id="welcomeContainer">
         <h1>Vítej na našich stránkách serveru</h1>
+        <!-- Tlačítko Resource Pack -->
+        <a id="resourcePackBtn" href="resourspacky (unzip me).zip" download>Resource Pack</a>
     </div>
 
     <script>
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
 
-        // Theme preference check
+        // Kontrola uložené preference tématu
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             body.classList.add(savedTheme);
             themeToggle.checked = savedTheme === 'dark';
         }
 
-        // Theme toggle event
+        // Přepínání tématu
         themeToggle.addEventListener('change', () => {
             if (themeToggle.checked) {
                 body.classList.add('dark');
@@ -43,3 +45,4 @@
     </script>
 </body>
 </html>
+
