@@ -1,5 +1,0 @@
-<FilesMatch "^\.env|WebSenderAPI\.php">
-    Order allow,deny
-    Deny from all
-</FilesMatch>
-Options -Indexes
