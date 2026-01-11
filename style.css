@@ -1,222 +1,317 @@
-/* Base Styles */
+/* --- ZÁKLADNÍ NASTAVENÍ --- */
 :root {
-  --light-bg: #f0f0f0;
-  --dark-bg: #1e1e1e;
-  --light-text: #333;
-  --dark-text: #eee;
-  --primary-color: #4CAF50;
-  --primary-dark: #689f38;
-  --switch-active: #2196F3;
-  --card-bg-light: #fff;
-  --card-bg-dark: #333;
-  --shadow-light: rgba(0, 0, 0, 0.1);
+  --primary-color: #4CAF50; /* Zelená */
+  --primary-hover: #45a049;
+  --discord-color: #5865F2; /* Discord modrá */
+  --text-light: #333;
+  --text-dark: #eee;
+  --card-light: #ffffff;
+  --card-dark: #2d2d2d;
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Core Layout */
 body {
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  padding: 0 20px;
+  padding: 0;
+  min-height: 100vh;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: var(--light-bg);
-  color: var(--light-text);
-  transition: all 0.3s ease;
-  position: relative;
 }
 
-/* Background Images */
+/* --- POZADÍ (PNG) --- */
 body:not(.dark) {
-  background-image: url("foto.png");
+  background: url("foto.png") no-repeat center center fixed;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 body.dark {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-  background-image: url("foto-dark.png");
+  color: var(--text-dark);
+  background: url("foto-dark.png") no-repeat center center fixed;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
-/* Theme Toggle */
-.switch {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  z-index: 10;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
+/* --- NAVIGACE (MENU) --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 34px;
+  width: 90%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-bottom: 2px solid var(--primary-color);
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
+body.dark .navbar {
+  background: rgba(30, 30, 30, 0.95);
 }
 
-input:checked + .slider {
-  background-color: var(--switch-active);
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px var(--switch-active);
-}
-
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-
-/* Navigation Buttons */
-#leftLink, #rightLink {
+.logo {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
   text-decoration: none;
-  position: absolute;
-  top: 20px;
-  background-color: var(--card-bg-light);
-  padding: 10px 20px;
-  border-radius: 5px;
-  box-shadow: 0 3px 6px var(--shadow-light);
-  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-#leftLink {
-  left: 100px;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-#rightLink {
-  right: 20px;
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 600;
+  transition: color 0.3s;
+  text-transform: uppercase;
+  font-size: 0.9rem;
 }
 
-body.dark #leftLink,
-body.dark #rightLink {
-  background-color: var(--card-bg-dark);
-  color: var(--primary-dark);
+body.dark .nav-links a {
+  color: var(--text-dark);
 }
 
-#leftLink:hover,
-#rightLink:hover {
-  background-color: var(--primary-color);
+.nav-links a:hover, .nav-links a.active {
+  color: var(--primary-color);
+}
+
+/* Přepínač téma */
+.switch-container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.switch-container input { display: none; }
+.switch-container i { font-size: 1.2rem; color: #555; transition: 0.3s; }
+body.dark .switch-container i { color: #ffd700; transform: rotate(360deg); }
+
+
+/* --- HERO SEKCE --- */
+.hero-section {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 80px;
+  background: transparent;
+}
+
+.hero-content {
+    background: rgba(15, 15, 15, 0.85);
+    padding: 50px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+body.dark .hero-content {
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin: 0 0 15px 0;
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  font-weight: 500;
+  color: #cccccc !important;
+}
+
+/* Tlačítka */
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-discord {
+  background-color: var(--discord-color);
   color: white;
 }
 
-/* Content Cards */
-#welcomeContainer,
-#statusContainer {
-  background-color: var(--card-bg-light);
-  border-radius: 20px;
+.btn-secondary {
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn-secondary:hover { background-color: var(--primary-hover); }
+
+
+/* --- KARTY --- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.overlap-top {
+    margin-top: -60px;
+    position: relative;
+    z-index: 10;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: var(--card-light);
   padding: 30px;
-  box-shadow: 0 6px 15px var(--shadow-light);
-  width: 60%;
-  max-width: 1200px;
-  margin-top: 80px;
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-body.dark #welcomeContainer,
-body.dark #statusContainer {
-  background-color: var(--card-bg-dark);
-}
-
-/* Headings */
-#welcomeContainer h1,
-#statusContainer h1 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin: 0 0 20px 0;
-  transition: color 0.3s ease;
-}
-
-body.dark #welcomeContainer h1,
-body.dark #statusContainer h1 {
-  color: var(--primary-dark);
-}
-
-/* Status Image Specific */
-#statusImage {
-  width: 90%;
-  max-width: 100%;
   border-radius: 15px;
-  border: 5px solid var(--primary-color);
-  box-shadow: 0 6px 12px var(--shadow-light);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  border-top: 5px solid var(--primary-color);
 }
 
-body.dark #statusImage {
-  border-color: var(--primary-dark);
+body.dark .card {
+  background: var(--card-dark);
 }
 
-#statusImage:hover {
-  transform: scale(1.1);
+.card h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
 }
 
-/* Resource Pack Button */
-#resourcePackBtn {
-    display: inline-block;
-    margin-top: 20px;
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-    padding: 15px 30px;
-    border-radius: 10px;
-    text-decoration: none;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
+.rules-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+.rules-list li {
+  margin-bottom: 12px;
+  padding-left: 15px;
+  border-left: 3px solid #ddd;
 }
 
-#resourcePackBtn:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
+/* --- TÝM --- */
+.team-section {
+  margin-top: 50px;
+  text-align: center;
+  background: var(--card-light);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+body.dark .team-section { background: var(--card-dark); }
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
 }
 
-/* Responsive Adjustments */
+.team-member {
+  transition: transform 0.3s;
+}
+.team-member:hover { transform: scale(1.05); }
+
+.team-member img {
+  border-radius: 15px;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border: 3px solid var(--primary-color);
+}
+.team-member h4 { margin: 10px 0 5px; color: var(--primary-color); }
+.team-member span { font-size: 0.9rem; opacity: 0.8; }
+
+/* --- PATIČKA --- */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* --- MOBIL --- */
 @media (max-width: 768px) {
-  #welcomeContainer,
-  #statusContainer {
-    width: 90%;
-    margin-top: 120px;
-  }
-  
-  #leftLink, #rightLink {
-    font-size: 1.2rem;
-    padding: 8px 15px;
-  }
-  
-  #leftLink {
-    left: 80px;
-  }
+  .hero-content { padding: 30px; }
+  .hero-content h1 { font-size: 2.2rem; }
+  .navbar { flex-direction: column; gap: 15px; padding: 15px 0; }
+  .overlap-top { margin-top: 20px; }
+  .info-grid { grid-template-columns: 1fr; }
+}
+
+/* --- GALERIE (Nové styly) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 10px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    aspect-ratio: 16/9;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }

@@ -3,27 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status Serveru</title>
+    <title>Status | Kira Server</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <label class="switch">
-        <input type="checkbox" id="themeToggle">
-        <span class="slider round"></span>
-    </label>
 
-    <a id="leftLink" href="../">Hlavní Stránka</a>
+    <nav class="navbar">
+        <a href="../" class="logo">Kira Server</a>
+        <div class="nav-links">
+            <a href="../">Domů</a>
+            <a href="#" class="active">Status</a>
+            <a href="../foto/">Galerie</a> <a href="http://ms48.hicoria.cloud:20693/" target="_blank">Dynmapa</a>
+            <label class="switch-container">
+                <input type="checkbox" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </label>
+        </div>
+    </nav>
 
-    <div id="statusContainer">
-        <h1>Status Serveru</h1>
-        <img id="statusImage" src="https://query.hicoria.com/query.php?user=mcx_430807" alt="Server Status">
-    </div>
+    <main class="container" style="margin-top: 120px; max-width: 1000px;">
+        <div class="card" style="text-align: center; overflow: hidden;">
+            <h1><i class="fas fa-server"></i> Status Serveru</h1>
+            
+            <div style="margin: 80px 0; display: flex; justify-content: center;">
+                <img id="statusImage" src="https://query.hicoria.com/query.php?user=mcx_430807" alt="Server Status" 
+                     style="
+                        transform: scale(1.8);
+                        border-radius: 5px; 
+                        box-shadow: 0 5px 25px rgba(0,0,0,0.2); 
+                        border: 2px solid var(--primary-color);
+                        transition: transform 0.3s ease;
+                     ">
+            </div>
+            
+            <a href="../" class="btn btn-secondary" style="position: relative; z-index: 10;">
+                <i class="fas fa-arrow-left"></i> Zpět na hlavní stránku
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            &copy; <span id="year"></span> Kira Server. Vytvořeno pro naši komunitu. <br>
+            <span style="font-size: 0.8rem; opacity: 0.6;">Nejsme spojeni s Mojang Studios.</span>
+        </p>
+    </footer>
 
     <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
-
         const savedTheme = localStorage.getItem('theme');
+
         if (savedTheme) {
             body.classList.add(savedTheme);
             themeToggle.checked = savedTheme === 'dark';
@@ -39,10 +72,11 @@
             }
         });
 
+        // Refresh každou 1 sekundu
         setInterval(function() {
             var img = document.getElementById('statusImage');
             img.src = "https://query.hicoria.com/query.php?user=mcx_430807?" + new Date().getTime(); 
-        }, 2500);
+        }, 1000);
     </script>
 </body>
 </html>

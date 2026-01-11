@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domů | Kira Server</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="./" class="logo">Kira Server</a>
+        <div class="nav-links">
+            <a href="#" class="active">Domů</a>
+            <a href="status/">Status</a>
+            <a href="foto/">Galerie</a> 
+            <a href="http://ms48.hicoria.cloud:20693/" target="_blank">Dynmapa</a>
+            
+            <a href="admin-login/" style="color: #ff5555; font-weight: bold;">
+                <i class="fas fa-user-shield"></i> Admin
+            </a>
+            <label class="switch-container" title="Přepnout vzhled">
+                <input type="checkbox" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </label>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Vítej na serveru!</h1>
+            <p class="subtitle">Připoj se k nám. Pro získání IP adresy se musíš ověřit na Discordu.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn primary"><i class="fas fa-gamepad"></i> Jak se připojit</a>
+                <a href="#" class="btn discord"><i class="fab fa-discord"></i> Discord</a>
+                <a href="#" class="btn secondary"><i class="fas fa-store"></i> Obchod</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="team-section">
+        <h2>Náš Tým</h2>
+        <div class="team-container" id="team-container">
+            </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Kira Server - Všechna práva vyhrazena</p>
+    </footer>
+
+    <script>
+        /* --- Data Týmu --- */
+        const teamMembers = [
+            { nick: "Kira", role: "Majitel" },
+            { nick: "Kokosak150", role: "Helpers" },
+            { nick: "NotMentrixlol", role: "Builders " },
+        ];
+
+        /* --- Generování Týmu --- */
+        const teamContainer = document.getElementById('team-container');
+        teamMembers.forEach(member => {
+            const memberHTML = `
+                <div class="team-member">
+                    <img src="https://minotar.net/helm/${member.nick}/100" alt="${member.nick}">
+                    <h4>${member.role}</h4>
+                    <span>${member.nick}</span>
+                </div>
+            `;
+            teamContainer.innerHTML += memberHTML;
+        });
+
+        /* --- Ostatní --- */
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('theme');
+
+        if (savedTheme) {
+            body.classList.add(savedTheme);
+            themeToggle.checked = savedTheme === 'dark';
+        }
+
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                body.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+
+</body>
+</html>
